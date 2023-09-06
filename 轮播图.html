@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        ul,li{list-style: none;}
+        #tab{width: 800px; height: 400px; position: relative; margin: 40px auto;}
+        #lis li{display: none;}
+        #lis img{width: 800px; height: 400px;}
+        #lis .opati{display: block;}
+
+        #doc{position: absolute; bottom: 10%; right: 10%;}
+        #doc li{width: 10px; height: 10px; background-color: aliceblue; margin: 0 10px; float: left;}
+        #doc .col{background-color: aqua;}
+    </style>
+</head>
+<body>
+    <div id="tab">
+        <ul id="lis">
+            <li class="opati"><img src="./img/春.jpg" alt=""></li>
+            <li><img src="./img/夏.jpg" alt=""></li>
+            <li><img src="./img/秋.jpg" alt=""></li>
+            <li><img src="./img/冬.jpg" alt=""></li>
+        </ul>
+        <ul id="doc">
+            <li class="col"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        let that;
+        class Tab {
+            constructor (id) {
+                that = this
+                this.main = document.querySelector(id)
+                this.lis = this.main.querySelectorAll('#lis li')
+                this.doc = this.main.querySelectorAll('#doc li')
+                this.init();
+            }
+            init() {
+                for(var i=0;i<this.doc.length;i++){
+                    this.doc[i].index = i
+                    this.doc[i].onclick = this.tooggleTab;
+
+                }
+            }
+            tooggleTab() {
+                that.clearClass()
+                this.className = 'col'
+                that.lis[this.index].className = 'opati'
+                console.log(this)
+            }
+            clearClass () {
+                for(var i=0;i<this.doc.length;i++){
+                    this.lis[i].className = ''
+                    this.doc[i].className = ''
+                }
+            }
+        }
+        new Tab('#tab')
+    </script>
+</body>
+</html>

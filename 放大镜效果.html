@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            margin: 150px;
+            display: flex;
+        }
+
+        .s-img {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .s-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .s-img span {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            opacity: .5;
+        }
+
+        .p-img {
+            position: relative;
+            display: none;
+            margin-left: 50px;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+        }
+        .p-img img{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main" id="mian">
+        <!-- 小图 -->
+        <div class="s-img" id="sImg">
+            <img src="./img/7.jpg" alt="">
+            <span class="lens" id="lens"></span>
+        </div>
+        <!-- 大图 -->
+        <div class="p-img" id="pImg">
+            <img src="./img/7.jpg" id="picImg" alt="">
+        </div>
+    </div>
+    <!-- <script>
+        // 小盒子
+        var sImg = document.getElementById('sImg')
+        // 阴影
+        var lens = document.getElementById('lens')
+        // 大盒子
+        var pImg = document.getElementById('pImg')
+        // main节点
+        var main = document.getElementById('main')
+        // 大图片
+        var picImg = document.getElementById('picImg')
+        // 给小盒子加入鼠标移入事件，让阴影和大盒子显示
+        sImg.onmouseover = function (e) {
+            lens.style.display = 'block'
+            pImg.style.display = 'block'
+        }
+        sImg.onmousemove = function (e) {
+            // 当前鼠标的位置-盒子距离浏览器左侧的偏移 - 阴影宽度的一半
+            let x = e.clientX - mian.offsetLeft - lens.offsetWidth / 2
+            let y = e.clientY - mian.offsetTop - lens.offsetHeight / 2
+            if(x<0){
+                x=0
+            }else if(x>sImg.offsetWidth - lens.offsetWidth){
+                x=sImg.offsetWidth - lens.offsetWidth
+            }
+            if(y<0){
+                y=0
+            }else if(y>sImg.offsetHeight - lens.offsetHeight){
+                y=sImg.offsetHeight - lens.offsetHeight
+            }
+
+            lens.style.left = x + 'px'
+            lens.style.top = y + 'px'
+
+            picImg.style.left = -x * (picImg.offsetWidth / sImg.offsetWidth)+'px'
+            picImg.style.top =  -y * (picImg.offsetHeight / sImg.offsetHeight)+'px'
+        }
+        sImg.onmouseout = function () {
+            lens.style.display = 'none'
+            pImg.style.display = 'none'
+        }
+    </script> -->
+    <script src="./js/放大镜效果.js"></script>
+</body>
+
+</html>
